@@ -21,7 +21,7 @@ export async function handler (req) {
   });
   let successMap = new Map();
   successRecords.forEach(r => {
-    successMap.set(domain,domain);
+    successMap.set(r.domain,r);
   })
   let errorcsv = fs.readFileSync('./errors.csv');
   const errorRecords = parse(errorcsv, {
@@ -51,6 +51,7 @@ export async function handler (req) {
     dbRecord.lastCheckedAt = "2025-01-25";
     dbRecord.GSI1SK = "2025-01-25";
     if(successMap.get(domain)) {
+      console.log('creating online record')
       dbRecord.status = "ONLINE";
       dbRecord.GSI1PK = "STATUS#ONLINE";
       dbRecord.historyLog = [{

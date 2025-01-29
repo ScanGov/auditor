@@ -1,5 +1,4 @@
 export async function handler (req) {
-  
   return {
     statusCode: 200,
     headers: {
