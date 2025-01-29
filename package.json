@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npx sandbox",
+    "deploy:staging": "npx arc deploy",
+    "deploy:production": "npx arc deploy --production",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],

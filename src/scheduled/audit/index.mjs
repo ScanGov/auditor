@@ -10,13 +10,17 @@ export async function handler(event) {
 
   let data = await arc.tables()
 
+  let today = new Date();
+  let priorDate = new Date(new Date().setDate(today.getDate() - 30));
+  let queryDate = priorDate.toISOString().split('T')[0];
+
   let result = await data.domains.query({
     IndexName: 'GSI1',
     Limit: 1,
     KeyConditionExpression: 'GSI1PK = :status AND GSI1SK < :date',
     ExpressionAttributeValues: {
       ':status': 'STATUS#ONLINE',
-      ':date': '2025-01-26',
+      ':date': queryDate,
     },
   })
 
